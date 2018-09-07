@@ -27,6 +27,16 @@ sudo chmod 777 /storage
 
 You could also use any persisted storage.
 
+## Read-only port 10255 on kubelets
+
+Since summer 2018 the read-only port on kubelet is disabled by default (also when installed by kubeadm or by Kubespray). So be sure that this argument is passed to kubelet process:
+
+```
+--read-only-port=10255
+```
+
+When installing or upgrading with Kubespray the kube_read_only_port var should be set for the cluster.
+
 ## VTS mode on Nginx Ingress
 
 In order to scrape the vts metrics from Nginx Ingress (they are referenced in the Grafana dashboard) you should be sure that the vts-status is enabled for the ingress. This can be achieved by editing the nginx-configuration ConfigMap as follows:
